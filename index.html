@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name</title>
+  <style>
+    :root {
+      --bg: #f5f3ef;
+      --text: #2a2a2a;
+      --muted: #5c5c5c;
+      --border: #d4d0c8;
+      --link: #3d4a5c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: normal;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.35rem;
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .bio p + p {
+      margin-top: 1rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .pieces {
+      list-style: none;
+    }
+
+    .piece {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .piece:first-child {
+      padding-top: 0;
+    }
+
+    .piece-title {
+      font-size: 1.05rem;
+      font-weight: normal;
+      margin-bottom: 0.35rem;
+    }
+
+    .piece-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      border-bottom-color: var(--link);
+    }
+
+    .piece-link {
+      font-size: 0.9rem;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1 id="name"></h1>
+      <p class="tagline" id="tagline"></p>
+      <div class="bio" id="bio"></div>
+    </header>
+
+    <section aria-labelledby="section-title">
+      <h2 id="section-title">Writing &amp; Research</h2>
+      <ul class="pieces" id="pieces"></ul>
+    </section>
+
+    <footer id="footer"></footer>
+  </main>
+
+  <script>
+    // ——— Edit everything below ———
+
+    const name = "Your Name";
+    const tagline = "Policy researcher · City, Country";
+    const bio = [
+      "Short paragraph about who you are and what you work on. Keep it to two or three sentences—enough for a visitor to understand your focus without scrolling.",
+      "Optional second paragraph: affiliations, current projects, or how to reach you for collaboration.",
+    ];
+    const email = "you@example.com";
+
+    const pieces = [
+      {
+        title: "Example Working Paper Title",
+        description: "One sentence summarizing the argument or contribution of this piece.",
+        pdf: "papers/example.pdf",
+      },
+      {
+        title: "Another Publication or Report",
+        description: "Brief description of topic, audience, or key finding.",
+        pdf: "papers/another.pdf",
+      },
+    ];
+
+    // ——— No need to edit below ———
+
+    document.getElementById("name").textContent = name;
+    document.getElementById("tagline").textContent = tagline;
+    document.getElementById("bio").innerHTML = bio.map((p) => `<p>${p}</p>`).join("");
+    document.getElementById("footer").innerHTML = `<a href="mailto:${email}">${email}</a>`;
+
+    const list = document.getElementById("pieces");
+    pieces.forEach((piece) => {
+      const li = document.createElement("li");
+      li.className = "piece";
+      li.innerHTML = `
+        <h3 class="piece-title">${piece.title}</h3>
+        <p class="piece-desc">${piece.description}</p>
+        <a class="piece-link" href="${piece.pdf}">PDF</a>
+      `;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
